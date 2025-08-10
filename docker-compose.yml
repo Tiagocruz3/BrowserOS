@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  browserless:
+    image: ghcr.io/browserless/chromium:latest
+    container_name: browserless
+    ports:
+      - "3000:3000"
+    environment:
+      TOKEN: "${TOKEN}"
+      PREBOOT_CHROME: "true"
+      MAX_CONCURRENT_SESSIONS: "5"
+      QUEUE_LENGTH: "50"
+      CONNECTION_TIMEOUT: "60000"
+      ENABLE_CORS: "true"
+    shm_size: "1gb"
+    restart: unless-stopped
